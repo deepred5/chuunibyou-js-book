@@ -14,6 +14,7 @@ module.exports = {
           collapsable: false, // 可折叠
           children: [
             '/algorithm/sort/bubble', // 你的md文件地址
+            '/algorithm/sort/select', // 你的md文件地址
           ]
         },
       ]
