@@ -1,6 +1,7 @@
 module.exports = {
   title: '中二病也要学JS',
   description: '中二病也要学JS',
+  base: '/chuunibyou-js-book/',
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },
