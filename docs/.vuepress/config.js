@@ -2,6 +2,7 @@ module.exports = {
   title: '中二病也要学JS',
   description: '中二病也要学JS',
   base: '/chuunibyou-js-book/',
+  port: 9900,
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },
@@ -10,11 +11,14 @@ module.exports = {
     sidebar: {
       '/algorithm/': [
         {
-          title: '排序', // 侧边栏名称
-          collapsable: false, // 可折叠
+          title: '排序',
+          collapsable: false,
           children: [
-            '/algorithm/sort/bubble', // 你的md文件地址
-            '/algorithm/sort/select', // 你的md文件地址
+            '/algorithm/sort/bubble', 
+            '/algorithm/sort/select',
+            '/algorithm/sort/insert',
+            '/algorithm/sort/shell',
+            '/algorithm/sort/merge',
           ]
         },
       ]

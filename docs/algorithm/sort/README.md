@@ -6,4 +6,7 @@
 
 目录:
 
-[冒泡排序](bubble)
+- [冒泡排序](bubble)
+- [选择排序](select)
+- [插入排序](insert)
+- [归并排序](merge)
