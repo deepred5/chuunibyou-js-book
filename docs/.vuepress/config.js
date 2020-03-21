@@ -19,6 +19,7 @@ module.exports = {
             '/algorithm/sort/insert',
             '/algorithm/sort/shell',
             '/algorithm/sort/merge',
+            '/algorithm/sort/quick',
           ]
         },
       ]
