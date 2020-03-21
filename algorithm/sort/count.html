@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>计数排序 | 中二病也要学JS</title>
+    <meta name="description" content="中二病也要学JS">
+    <meta name="generator" content="VuePress 1.4.0">
+    
+    
+    <link rel="preload" href="/chuunibyou-js-book/assets/css/0.styles.7c6981bc.css" as="style"><link rel="preload" href="/chuunibyou-js-book/assets/js/app.b82c234e.js" as="script"><link rel="preload" href="/chuunibyou-js-book/assets/js/2.f2c7bff9.js" as="script"><link rel="preload" href="/chuunibyou-js-book/assets/js/9.80f0e0f6.js" as="script"><link rel="prefetch" href="/chuunibyou-js-book/assets/js/10.e575cfc3.js"><link rel="prefetch" href="/chuunibyou-js-book/assets/js/11.f4059e4d.js"><link rel="prefetch" href="/chuunibyou-js-book/assets/js/12.1fc5ffe4.js"><link rel="prefetch" href="/chuunibyou-js-book/assets/js/13.f809b5e6.js"><link rel="prefetch" href="/chuunibyou-js-book/assets/js/14.2fa8ece2.js"><link rel="prefetch" href="/chuunibyou-js-book/assets/js/15.a07d5275.js"><link rel="prefetch" href="/chuunibyou-js-book/assets/js/3.67c8ce63.js"><link rel="prefetch" href="/chuunibyou-js-book/assets/js/4.5f60d4ea.js"><link rel="prefetch" href="/chuunibyou-js-book/assets/js/5.6c5f8081.js"><link rel="prefetch" href="/chuunibyou-js-book/assets/js/6.d989d12c.js"><link rel="prefetch" href="/chuunibyou-js-book/assets/js/7.43f16674.js"><link rel="prefetch" href="/chuunibyou-js-book/assets/js/8.80ad77ed.js">
+    <link rel="stylesheet" href="/chuunibyou-js-book/assets/css/0.styles.7c6981bc.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/chuunibyou-js-book/" class="home-link router-link-active"><!----> <span class="site-name">中二病也要学JS</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/chuunibyou-js-book/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/chuunibyou-js-book/algorithm/" class="nav-link router-link-active">
+  Start
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/chuunibyou-js-book/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/chuunibyou-js-book/algorithm/" class="nav-link router-link-active">
+  Start
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>排序</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/chuunibyou-js-book/algorithm/sort/bubble.html" class="sidebar-link">冒泡排序</a></li><li><a href="/chuunibyou-js-book/algorithm/sort/select.html" class="sidebar-link">选择排序</a></li><li><a href="/chuunibyou-js-book/algorithm/sort/insert.html" class="sidebar-link">插入排序</a></li><li><a href="/chuunibyou-js-book/algorithm/sort/shell.html" class="sidebar-link">希尔排序</a></li><li><a href="/chuunibyou-js-book/algorithm/sort/merge.html" class="sidebar-link">归并排序</a></li><li><a href="/chuunibyou-js-book/algorithm/sort/quick.html" class="sidebar-link">快速排序</a></li><li><a href="/chuunibyou-js-book/algorithm/sort/count.html" class="active sidebar-link">计数排序</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="计数排序"><a href="#计数排序" class="header-anchor">#</a> 计数排序</h1> <p>时间复杂度：O(n+k)</p> <p>稳定性：稳定</p> <p>非比较类排序，空间换时间</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">countSort</span><span class="token punctuation">(</span><span class="token parameter">arr<span class="token punctuation">,</span> maxValue</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 创建额外数组</span>
+  <span class="token keyword">const</span> bucket <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span>maxValue <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">let</span> sortedIndex <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> arr<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>bucket<span class="token punctuation">[</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      bucket<span class="token punctuation">[</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    bucket<span class="token punctuation">[</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">++</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// bucket数组下标即是arr的内容</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> bucket<span class="token punctuation">.</span>length<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>bucket<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      arr<span class="token punctuation">[</span>sortedIndex<span class="token operator">++</span><span class="token punctuation">]</span> <span class="token operator">=</span> j<span class="token punctuation">;</span>
+      bucket<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">--</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> arr<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/chuunibyou-js-book/algorithm/sort/quick.html" class="prev">
+        快速排序
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/chuunibyou-js-book/assets/js/app.b82c234e.js" defer></script><script src="/chuunibyou-js-book/assets/js/2.f2c7bff9.js" defer></script><script src="/chuunibyou-js-book/assets/js/9.80f0e0f6.js" defer></script>
+  </body>
+</html>
